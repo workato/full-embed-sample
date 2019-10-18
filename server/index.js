@@ -5,7 +5,7 @@ export default app => {
   app.get('/workato-jwt', (req, res) => {
     const token = sign(
       {
-        sub: `${process.env.WK_ACCOUND_API_KEY}:${process.env.WK_USER_ID}`,
+        sub: `${process.env.WK_API_KEY}:${process.env.WK_USER_ID}`,
         jti: nanoid()
       },
       process.env.WK_JWT_PRIVATE_KEY,
