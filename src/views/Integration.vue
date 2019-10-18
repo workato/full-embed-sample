@@ -1,15 +1,20 @@
 <template>
-  <iframe ref="iframe" class="iframe" :src="iframeSrc"></iframe>
+  <iframe class="iframe" :src="iframeSrc"></iframe>
 </template>
 
 <script>
-  import {convertToWorkatoUrl, getInternalUrl, getFullWorkatoUrl} from "@/utils";
+  import {convertToWorkatoUrl, getInternalUrl, getProxiedWorkatoUrl} from "@/utils";
 
   export default {
     name: "Integration",
 
     mounted() {
       WorkatoApi.on('navigated', this.handleWorkatoNavigated);
+    },
+
+    async beforeRouteEnter(to, from, next) {
+      const token = await fetch('/workato-jwt').then(res => res.json());
+      next(vm => vm.setToken(token));
     },
 
     beforeRouteUpdate(to, from, next) {
@@ -24,12 +29,15 @@
 
     data() {
       return {
-        workatoLoaded: false,
-        iframeSrc: getFullWorkatoUrl(convertToWorkatoUrl(this.$router.currentRoute.fullPath))
+        iframeSrc: null
       }
     },
 
     methods: {
+      setToken(token) {
+        this.iframeSrc = getProxiedWorkatoUrl(convertToWorkatoUrl(this.$router.currentRoute.fullPath), token);
+      },
+
       handleWorkatoNavigated({url, replaced}) {
         console.log('WORKATO "navigated" event received:', url, replaced);
 
