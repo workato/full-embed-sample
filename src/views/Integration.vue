@@ -18,7 +18,6 @@
     },
 
     beforeRouteUpdate(to, from, next) {
-      console.log('INTERNAL URL CHANGED TO', to.fullPath);
       WorkatoApi.navigateTo(convertToWorkatoUrl(to.fullPath));
       next();
     },
@@ -39,16 +38,11 @@
       },
 
       handleWorkatoNavigated({url, replaced}) {
-        console.log('WORKATO "navigated" event received:', url, replaced);
-
         const internalUrl = getInternalUrl(url);
 
         if (internalUrl === this.$router.currentRoute.fullPath) {
-          console.log('IGNORING IT AS CURRENT URL IS THE SAME');
           return;
         }
-
-        console.log('UPDATING INTERNAL URL FROM', this.$router.currentRoute.fullPath, 'TO', internalUrl, `(${replaced ? 'replacing' : 'pushing'})`);
 
         if (replaced) {
           this.$router.replace(internalUrl);
