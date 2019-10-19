@@ -2,8 +2,11 @@
   "name": "acme-embed-demo",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "12.10",
+    "npm": "6.10.3"
+  },
   "scripts": {
-    "start": "vue-cli-service express:run",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "express": "vue-cli-service express:watch",
