@@ -18,10 +18,7 @@ export default app => {
         jti: nanoid()
       },
       process.env.WK_JWT_PRIVATE_KEY,
-      {
-        algorithm: 'RS256',
-        expiresIn: 30
-      }
+      {algorithm: 'RS256'}
     );
     
     res.json(token);
