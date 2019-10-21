@@ -3,15 +3,13 @@ import {sign} from 'jsonwebtoken';
 import auth from 'http-auth';
 
 const basicAuth = auth.basic({realm: "Private Area"}, (username, password, callback) => {
-  if (process.env.USER_NAME && process.env.USER_PASSW) {
-    callback(username === process.env.USER_NAME && password === process.env.USER_PASSW);
-  } else {
-    return true;
-  }
+  callback(username === process.env.USER_NAME && password === process.env.USER_PASSWORD);
 });
 
 export default app => {
-  app.use(auth.connect(basicAuth));
+  if (process.env.USER_NAME && process.env.USER_PASSWORD) {
+    app.use(auth.connect(basicAuth));
+  }
 
   app.get('/workato-jwt', (req, res) => {
     const token = sign(
