@@ -9,7 +9,7 @@
   "scripts": {
     "start": "vue-cli-service express:run",
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --modern",
     "express": "vue-cli-service express:watch",
     "express:run": "vue-cli-service express:run"
   },
