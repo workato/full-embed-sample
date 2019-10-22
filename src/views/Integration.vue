@@ -9,7 +9,9 @@
     name: "Integration",
 
     mounted() {
-      WorkatoApi.on('navigated', this.handleWorkatoNavigated);
+      WorkatoApi
+        .on('loaded', this.handleWorkatoNavigated)
+        .on('navigated', this.handleWorkatoNavigated);
     },
 
     async beforeRouteEnter(to, from, next) {
@@ -23,7 +25,9 @@
     },
 
     destroyed() {
-      WorkatoApi.off('navigated', this.handleWorkatoNavigated);
+      WorkatoApi
+        .off('loaded', this.handleWorkatoNavigated)
+        .off('navigated', this.handleWorkatoNavigated);
     },
 
     data() {
