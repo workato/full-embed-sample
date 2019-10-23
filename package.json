@@ -19,7 +19,8 @@
     "jsonwebtoken": "^8.5.1",
     "nanoid": "^2.1.4",
     "vue": "^2.6.10",
-    "vue-router": "^3.0.3"
+    "vue-router": "^3.0.3",
+    "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.12.0",
