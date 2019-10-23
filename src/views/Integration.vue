@@ -3,15 +3,24 @@
 </template>
 
 <script>
-  import {convertToWorkatoUrl, getInternalUrl, getProxiedWorkatoUrl} from "@/utils";
-
   export default {
     name: "Integration",
 
     mounted() {
-      WorkatoApi
-        .on('loaded', this.handleWorkatoNavigated)
-        .on('navigated', this.handleWorkatoNavigated);
+      WorkatoApi.handleNavigation({
+        onWorkatoNavigation: ({internalUrl, urlReplaced, preventUrlChange}) => {
+          preventUrlChange();
+
+          if (urlReplaced) {
+            this.$router.replace(internalUrl);
+          } else {
+            this.$router.push(internalUrl);
+          }
+        },
+        onEmbeddingLinkClick({preventUrlChange}) {
+          preventUrlChange();
+        }
+      });
     },
 
     async beforeRouteEnter(to, from, next) {
@@ -20,14 +29,12 @@
     },
 
     beforeRouteUpdate(to, from, next) {
-      WorkatoApi.navigateTo(convertToWorkatoUrl(to.fullPath));
+      WorkatoApi.navigateTo(WorkatoApi.getWorkatoUrl(to.fullPath));
       next();
     },
 
     destroyed() {
-      WorkatoApi
-        .off('loaded', this.handleWorkatoNavigated)
-        .off('navigated', this.handleWorkatoNavigated);
+      WorkatoApi.disableNavigationHandling();
     },
 
     data() {
@@ -38,21 +45,7 @@
 
     methods: {
       setToken(token) {
-        this.iframeSrc = getProxiedWorkatoUrl(convertToWorkatoUrl(this.$router.currentRoute.fullPath), token);
-      },
-
-      handleWorkatoNavigated({url, replaced}) {
-        const internalUrl = getInternalUrl(url);
-
-        if (internalUrl === this.$router.currentRoute.fullPath) {
-          return;
-        }
-
-        if (replaced) {
-          this.$router.replace(internalUrl);
-        } else {
-          this.$router.push(internalUrl);
-        }
+        this.iframeSrc = WorkatoApi.getIFrameUrl(token);
       }
     }
   }

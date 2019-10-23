@@ -5,8 +5,6 @@
 </template>
 
 <script>
-  import {getInternalUrl} from "@/utils";
-
   export default {
     name: "WorkatoLink",
 
@@ -19,7 +17,7 @@
     
     computed: {
       internalUrl() {
-        return getInternalUrl(this.href);
+        return WorkatoApi.getInternalUrl(this.href);
       },
 
       active() {
@@ -31,8 +29,8 @@
         const currentPath = this.$route.path;
 
         return (
-          activeOn.some(activePath => currentPath.startsWith(getInternalUrl(activePath))) &&
-          !inactiveOn.some(inactivePath => currentPath.startsWith(getInternalUrl(inactivePath)))
+          activeOn.some(activePath => currentPath.startsWith(WorkatoApi.getInternalUrl(activePath))) &&
+          !inactiveOn.some(inactivePath => currentPath.startsWith(WorkatoApi.getInternalUrl(inactivePath)))
         );
       }
     }
