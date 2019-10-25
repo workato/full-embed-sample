@@ -13,6 +13,7 @@
 <style scoped lang="scss">
   .search {
     position: relative;
+    margin-left: 25px;
   }
 
   .input {

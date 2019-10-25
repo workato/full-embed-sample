@@ -134,7 +134,7 @@
     display: flex;
     align-items: center;
     position: relative;
-    padding-right: calc(100% - 1414px);
+    padding-right: 50px;
     flex: 0 0 auto;
   }
 
@@ -158,6 +158,7 @@
     justify-content: center;
     flex-direction: column;
     cursor: pointer;
+    flex: 0 0 auto;
 
     &__line {
       background: #fff;
@@ -291,6 +292,7 @@
     margin-right: auto;
     height: 29px;
     background: url("./assets/logo.png") center / contain no-repeat;
+    flex: 0 0 auto;
   }
 
   .user {
