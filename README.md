@@ -1,9 +1,10 @@
 # acme-embed-demo
 
 ## Project setup
-```
-npm install
-```
+
+Take a look at `.env` file in the root. It contains all the environment variables that are used by the app.
+
+You can create `.env.local` file and override default values.
 
 ### Compiles and hot-reloads for development
 ```
