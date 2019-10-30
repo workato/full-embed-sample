@@ -8,6 +8,13 @@ You can create `.env.local` file and override default values.
 
 ### Compiles and hot-reloads for development
 ```
+# Bash window #1: run Workato Dev Server
+...
+
+# Bash window #2: run API server
+npm run express
+
+# Bash window #3: run frontend server
 npm run serve
 ```
 
