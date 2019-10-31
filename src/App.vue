@@ -26,7 +26,7 @@
           <div class="menu__item menu__item_analytics">
             Analytics
           </div>
-          <RouterLink class="menu__item menu__item_integration" to="/integration" exact-active-class="menu__item_active">
+          <RouterLink class="menu__item menu__item_integration" to="/integration" active-class="menu__item_active">
             Integration
           </RouterLink>
         </div>
