@@ -4,6 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11"/>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <% if (NODE_ENV === 'production') { %>
+      <script>
+        if (location.protocol === 'http:') {
+          location.replace('https://' + location.host + location.pathname + location.search + location.hash);
+        }
+      </script>
+    <% } %>
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <link rel="stylesheet" href="<%= BASE_URL %>fontawesome.css">
     <script src="<%= VUE_APP_WK_OEM_CLIENT_URL %>"></script>
