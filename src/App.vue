@@ -32,7 +32,7 @@
         </div>
         <img class="menu__footer" src="./assets/menu_footer.png"/>
       </div>
-      <div class="logo"></div>
+      <router-link class="logo" to="/"></router-link>
       <Search/>
       <img class="user" src="./assets/header__user.png"/>
     </div>
