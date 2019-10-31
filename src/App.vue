@@ -1,40 +1,53 @@
 <template>
   <div class="app">
     <div class="header">
-      <div class="menu-btn" :class="{'menu-btn_active': menuOpened}" @click="toggleMenu()">
+      <div ref="mainMenuToggle"
+        class="menu-btn"
+        :class="{'menu-btn_active': mainMenuOpened}"
+        @click="mainMenuOpened = !mainMenuOpened">
         <div class="menu-btn__line"></div>
         <div class="menu-btn__line"></div>
         <div class="menu-btn__line"></div>
       </div>
-      <div class="menu" :class="{menu_opened: menuOpened}">
-        <div class="menu__items" @click="toggleMenu(false)">
-          <RouterLink class="menu__item menu__item_home" to="/" exact-active-class="menu__item_active">
+      <Menu class="main-menu" :opened.sync="mainMenuOpened" :toggleElem="$refs.mainMenuToggle">
+        <div class="main-menu__items" @click="mainMenuOpened = false">
+          <RouterLink class="main-menu__item main-menu__item_home" to="/" exact-active-class="main-menu__item_active">
             Home
           </RouterLink>
-          <div class="menu__item menu__item_campaigns">
+          <div class="main-menu__item main-menu__item_campaigns">
             Campaigns
           </div>
-          <div class="menu__item menu__item_content">
+          <div class="main-menu__item main-menu__item_content">
             Content
           </div>
-          <div class="menu__item menu__item_assets">
+          <div class="main-menu__item main-menu__item_assets">
             Assets
           </div>
-          <div class="menu__item menu__item_requests">
+          <div class="main-menu__item main-menu__item_requests">
             Requests
           </div>
-          <div class="menu__item menu__item_analytics">
+          <div class="main-menu__item main-menu__item_analytics">
             Analytics
           </div>
-          <RouterLink class="menu__item menu__item_integration" to="/integration" active-class="menu__item_active">
+          <RouterLink class="main-menu__item main-menu__item_integration" to="/integration" active-class="main-menu__item_active">
             Integration
           </RouterLink>
         </div>
-        <img class="menu__footer" src="./assets/menu_footer.png"/>
-      </div>
+        <img class="main-menu__footer" src="./assets/menu_footer.png"/>
+      </Menu>
       <router-link class="logo" to="/"></router-link>
       <Search/>
-      <img class="user" src="./assets/header__user.png"/>
+      <div class="user-menu">
+        <img ref="userMenuToggle"
+          class="user"
+          src="./assets/header__user.png"
+          @click="userMenuOpened = !userMenuOpened"/>
+        <Menu :opened.sync="userMenuOpened" :toggleElem="$refs.userMenuToggle">
+          <a class="user-menu__item"
+            :href="`${workatoOrigin}/users/sign_out`"
+            @click="userMenuOpened = false">Sign out</a>
+        </Menu>
+      </div>
     </div>
     <div class="content">
       <router-view/>
@@ -44,22 +57,31 @@
 </template>
 
 <script>
+  import {config} from './config';
   import Search from '@/components/Search';
+  import Menu from "@/components/Menu";
 
   export default {
     components: {
+      Menu,
       Search
     },
 
     data() {
       return {
-        menuOpened: false
+        workatoOrigin: config.workatoOrigin,
+        mainMenuOpened: false,
+        userMenuOpened: false
       }
     },
 
     methods: {
-      toggleMenu(flag = !this.menuOpened) {
-        this.menuOpened = flag;
+      toggleMenu(flag = !this.mainMenuOpened) {
+        this.mainMenuOpened = flag;
+      },
+
+      toggleUserMenu(flag = !this.userMenuOpened) {
+        this.userMenuOpened = flag;
       }
     }
   }
@@ -187,23 +209,7 @@
     }
   }
 
-  .menu {
-    position: absolute;
-    visibility: hidden;
-    transition: opacity .3s ease, visibility .3s ease;
-    background: #fff;
-    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2);
-    padding: 35px;
-    opacity: 0;
-    top: 55px;
-    left: 5px;
-
-    &_opened {
-      visibility: visible;
-      opacity: 1;
-      z-index: 100;
-    }
-
+  .main-menu {
     &__items {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -234,7 +240,7 @@
         color: #50636d;
       }
 
-      &.menu__item_active,
+      &.main-menu__item_active,
       &:hover,
       &:active {
         color: #0085FF;
@@ -243,7 +249,7 @@
       &_home {
         background-image: url("./assets/home_icon.png");
 
-        &.menu__item_active {
+        &.main-menu__item_active {
           background-image: url("./assets/home_icon_active.png");
         }
       }
@@ -271,7 +277,7 @@
       &_integration {
         background-image: url("./assets/integration_icon.png");
 
-        &.menu__item_active {
+        &.main-menu__item_active {
           background-image: url("./assets/integration_icon_active.png");
         }
       }
@@ -299,6 +305,38 @@
     width: 196px;
     height: 40px;
     margin-left: 10px;
+    cursor: pointer;
+  }
+
+  .user-menu {
+    position: relative;
+
+    .menu {
+      right: 0;
+      padding: 0;
+      top: 44px;
+    }
+
+    &__item {
+      display: block;
+      padding: 10px;
+      font-size: 15px;
+      border-left: 4px solid transparent;
+
+      &,
+      &:link,
+      &:visited,
+      &:hover,
+      &:active {
+        color: #37434C;
+        text-decoration: none;
+      }
+
+      &:hover {
+        background: #DADFE3;
+        border-left-color: #37434C;
+      }
+    }
   }
 
   .button {
