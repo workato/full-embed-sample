@@ -73,16 +73,6 @@
         mainMenuOpened: false,
         userMenuOpened: false
       }
-    },
-
-    methods: {
-      toggleMenu(flag = !this.mainMenuOpened) {
-        this.mainMenuOpened = flag;
-      },
-
-      toggleUserMenu(flag = !this.userMenuOpened) {
-        this.userMenuOpened = flag;
-      }
     }
   }
 </script>
