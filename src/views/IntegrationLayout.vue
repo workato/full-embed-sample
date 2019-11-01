@@ -18,9 +18,9 @@
 
 <style scoped lang="scss">
   .integrations {
+    flex: 1 1 auto;
     display: flex;
     align-items: stretch;
-    height: 100%;
   }
 
   .aside {
