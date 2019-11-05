@@ -295,6 +295,7 @@
       &_integration {
         background-image: url("./assets/integration_icon.svg");
 
+        &:hover,
         &.main-menu__item_active {
           background-image: url("./assets/integration_icon_active.svg");
         }
