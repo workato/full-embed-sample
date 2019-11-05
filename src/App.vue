@@ -239,38 +239,64 @@
       }
 
       &_home {
-        background-image: url("./assets/home_icon.png");
+        background-image: url("./assets/home_icon.svg");
 
+        &:hover,
         &.main-menu__item_active {
-          background-image: url("./assets/home_icon_active.png");
+          background-image: url("./assets/home_icon_active.svg");
         }
       }
 
       &_campaigns {
-        background-image: url("./assets/campaigns_icon.png");
+        background-image: url("./assets/campaigns_icon.svg");
+
+        &:hover,
+        &.main-menu__item_active {
+          background-image: url("./assets/campaigns_icon_active.svg");
+        }
       }
 
       &_content {
-        background-image: url("./assets/content_icon.png");
+        background-image: url("./assets/content_icon.svg");
+
+        &:hover,
+        &.main-menu__item_active {
+          background-image: url("./assets/content_icon_active.svg");
+        }
       }
 
       &_assets {
-        background-image: url("./assets/assets_icon.png");
+        background-image: url("./assets/assets_icon.svg");
+
+        &:hover,
+        &.main-menu__item_active {
+          background-image: url("./assets/assets_icon_active.svg");
+        }
       }
 
       &_requests {
-        background-image: url("./assets/requests_icon.png");
+        background-image: url("./assets/requests_icon.svg");
+
+        &:hover,
+        &.main-menu__item_active {
+          background-image: url("./assets/requests_icon_active.svg");
+        }
       }
 
       &_analytics {
-        background-image: url("./assets/analytics_icon.png");
+        background-image: url("./assets/analytics_icon.svg");
+
+        &:hover,
+        &.main-menu__item_active {
+          background-image: url("./assets/analytics_icon_active.svg");
+        }
       }
 
       &_integration {
-        background-image: url("./assets/integration_icon.png");
+        background-image: url("./assets/integration_icon.svg");
 
         &.main-menu__item_active {
-          background-image: url("./assets/integration_icon_active.png");
+          background-image: url("./assets/integration_icon_active.svg");
         }
       }
     }
