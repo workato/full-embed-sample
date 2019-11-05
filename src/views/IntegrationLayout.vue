@@ -24,7 +24,7 @@
   }
 
   .aside {
-    width: 300px;
+    width: 250px;
   }
 
   .content {
