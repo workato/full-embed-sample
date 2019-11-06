@@ -15,10 +15,12 @@
 
     mounted() {
       document.addEventListener('click', this.handleDocumentClick, true);
+      WorkatoApi.on('click', this.handleIFrameClick);
     },
 
     destroyed() {
       document.removeEventListener('click', this.handleDocumentClick, true);
+      WorkatoApi.off('click', this.handleIFrameClick);
     },
 
     methods: {
@@ -39,6 +41,10 @@
           return;
         }
 
+        this.toggleOpened(false);
+      },
+
+      handleIFrameClick() {
         this.toggleOpened(false);
       }
     }
