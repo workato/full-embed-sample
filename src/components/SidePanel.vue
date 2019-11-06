@@ -9,16 +9,21 @@
     <div class="side-panel__separator"></div>
     <div class="side-panel__content">
       <WorkatoLink class="side-panel__item" activeClass="side-panel__item_active" href="/dashboard/main"
-        :activeOn="['/dashboard']">
+        :activeOn="['/dashboard*']">
         Dashboard
       </WorkatoLink>
-      <WorkatoLink class="side-panel__item" activeClass="side-panel__item_active" href="/recipes"
-        :inactiveOn="['/recipes/browse']">
+      <WorkatoLink class="side-panel__item" activeClass="side-panel__item_active" href="/"
+        :activeOn="['/recipes*']"
+        :inactiveOn="['/recipes/browse*']">
         Recipes
       </WorkatoLink>
-      <WorkatoLink class="side-panel__item" activeClass="side-panel__item_active" href="/connections">Connected Apps
+      <WorkatoLink class="side-panel__item" activeClass="side-panel__item_active" href="/connections"
+        :activeOn="['/connections*']">
+        Connected Apps
       </WorkatoLink>
-      <WorkatoLink class="side-panel__item" activeClass="side-panel__item_active" href="/recipes/browse">Community
+      <WorkatoLink class="side-panel__item" activeClass="side-panel__item_active" href="/recipes/browse"
+        :activeOn="['/recipes/browse*']">
+        Community
       </WorkatoLink>
     </div>
   </div>

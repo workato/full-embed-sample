@@ -17,12 +17,14 @@ export default new Router({
     },
     {
       path: '/integration',
+      redirect: '/integration/dashboard/main',
+      pathToRegexpOptions: {strict: true},
+    },
+    {
+      path: '/integration/',
       component: IntegrationLayout,
+      pathToRegexpOptions: {strict: true},
       children: [
-        {
-          path: '',
-          redirect: 'dashboard/main'
-        },
         {
           path: '*',
           component: Integration
