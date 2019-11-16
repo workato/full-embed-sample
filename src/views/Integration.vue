@@ -7,18 +7,26 @@
     name: "Integration",
 
     mounted() {
-      WorkatoApi.handleNavigation({
-        onWorkatoNavigation: ({internalUrl, urlReplaced, preventUrlChange}) => {
-          preventUrlChange();
+      Workato.handleNavigation({
+        onWorkatoNavigation: ({embeddingUrl, urlReplaced, preventVendorUrlChange}) => {
+          // Preventing URL change as it will be done by Vue in `$router.replace` and `$router.push` method calls below
+          preventVendorUrlChange();
 
           if (urlReplaced) {
-            this.$router.replace(internalUrl);
+            this.$router.replace(embeddingUrl);
           } else {
-            this.$router.push(internalUrl);
+            this.$router.push(embeddingUrl);
           }
         },
-        onEmbeddingLinkClick({preventUrlChange}) {
-          preventUrlChange();
+        onVendorNavigation(event) {
+          if (event.reason === 'link') {
+            // Preventing URL change as it will be done by Vue
+            event.preventVendorUrlChange();
+          }
+
+          // Also preventing Workato URL change as it will be done in `beforeRouteUpdate` method after Vue
+          // will change current URL
+          event.preventWorkatoUrlChange();
         }
       });
     },
@@ -29,12 +37,12 @@
     },
 
     beforeRouteUpdate(to, from, next) {
-      WorkatoApi.navigateTo(WorkatoApi.getWorkatoUrl(to.fullPath));
+      Workato.navigateTo(Workato.extractWorkatoUrl(to.fullPath));
       next();
     },
 
     destroyed() {
-      WorkatoApi.disableNavigationHandling();
+      Workato.disableNavigationHandling();
     },
 
     data() {
@@ -45,7 +53,7 @@
 
     methods: {
       setToken(token) {
-        this.iframeSrc = WorkatoApi.getIFrameUrl(token);
+        this.iframeSrc = Workato.generateIFrameUrl(token);
       }
     }
   }

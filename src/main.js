@@ -6,8 +6,8 @@ import {config} from './config';
 
 Vue.config.productionTip = false;
 
-WorkatoApi.configure({
-  pathPrefix: config.workatoRoutesPrefix
+Workato.configure({
+  embeddingUrlPrefix: config.workatoRoutesPrefix
 });
 
 new Vue({

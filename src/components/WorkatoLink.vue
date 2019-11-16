@@ -17,7 +17,7 @@
     
     computed: {
       internalUrl() {
-        return WorkatoApi.getInternalUrl(this.href);
+        return Workato.constructEmbeddingUrl(this.href);
       },
 
       active() {
@@ -48,7 +48,7 @@
           const workatoUrl = exact ? pattern : pattern.slice(0, -1);
           return {
             exact,
-            path: WorkatoApi.getInternalUrl(workatoUrl)
+            path: Workato.constructEmbeddingUrl(workatoUrl)
           }
         });
       },

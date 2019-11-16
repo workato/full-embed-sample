@@ -15,12 +15,12 @@
 
     mounted() {
       document.addEventListener('click', this.handleDocumentClick, true);
-      WorkatoApi.on('click', this.handleIFrameClick);
+      Workato.on('click', this.handleIFrameClick);
     },
 
     destroyed() {
       document.removeEventListener('click', this.handleDocumentClick, true);
-      WorkatoApi.off('click', this.handleIFrameClick);
+      Workato.off('click', this.handleIFrameClick);
     },
 
     methods: {
