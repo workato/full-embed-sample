@@ -1,5 +1,5 @@
 <template>
-  <div class="menu" :class="{menu_opened: opened}">
+  <div class="Menu" :class="{Menu_opened: opened}">
     <slot></slot>
   </div>
 </template>
@@ -10,7 +10,7 @@
 
     props: {
       opened: Boolean,
-      toggleElem: null
+      toggleButton: null
     },
 
     mounted() {
@@ -37,7 +37,13 @@
           return;
         }
 
-        if (this.toggleElem && (this.toggleElem === event.target || this.toggleElem.contains(event.target))) {
+        let toggleElem;
+
+        if (this.toggleButton) {
+          toggleElem = this.toggleButton.$el || this.toggleButton;
+        }
+
+        if (toggleElem && (toggleElem === event.target || toggleElem.contains(event.target))) {
           return;
         }
 
@@ -51,8 +57,8 @@
   }
 </script>
 
-<style scoped lang="scss">
-  .menu {
+<style lang="scss">
+  .Menu {
     position: absolute;
     visibility: hidden;
     transition: opacity .3s ease, visibility .3s ease;

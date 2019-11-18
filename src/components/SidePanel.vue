@@ -1,27 +1,27 @@
 <template>
-  <div class="side-panel">
-    <div class="side-panel__header">
+  <div class="SidePanel">
+    <div class="SidePanel__header">
       <WorkatoLink class="button button_link button_block" href="/recipes/new">
         <i class="fas fa-plus"></i>
         New recipe
       </WorkatoLink>
     </div>
-    <div class="side-panel__separator"></div>
-    <div class="side-panel__content">
-      <WorkatoLink class="side-panel__item" activeClass="side-panel__item_active" href="/dashboard/main"
+    <div class="SidePanel__separator"></div>
+    <div class="SidePanel__content">
+      <WorkatoLink class="SidePanel__item" activeClass="SidePanel__item_active" href="/dashboard/main"
         :activeOn="['/dashboard*']">
         Dashboard
       </WorkatoLink>
-      <WorkatoLink class="side-panel__item" activeClass="side-panel__item_active" href="/"
+      <WorkatoLink class="SidePanel__item" activeClass="SidePanel__item_active" href="/"
         :activeOn="['/recipes*']"
         :inactiveOn="['/recipes/browse*']">
         Recipes
       </WorkatoLink>
-      <WorkatoLink class="side-panel__item" activeClass="side-panel__item_active" href="/connections"
+      <WorkatoLink class="SidePanel__item" activeClass="SidePanel__item_active" href="/connections"
         :activeOn="['/connections*']">
         Connected Apps
       </WorkatoLink>
-      <WorkatoLink class="side-panel__item" activeClass="side-panel__item_active" href="/recipes/browse"
+      <WorkatoLink class="SidePanel__item" activeClass="SidePanel__item_active" href="/recipes/browse"
         :activeOn="['/recipes/browse*']">
         Community
       </WorkatoLink>
@@ -38,8 +38,8 @@
   }
 </script>
 
-<style scoped lang="scss">
-  .side-panel {
+<style lang="scss">
+  .SidePanel {
     background: #F3F4F6;
     height: 100%;
 

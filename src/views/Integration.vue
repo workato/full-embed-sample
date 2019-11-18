@@ -1,5 +1,5 @@
 <template>
-  <iframe class="iframe" :src="iframeSrc"></iframe>
+  <iframe class="IntegrationIframe" :src="iframeSrc"></iframe>
 </template>
 
 <script>
@@ -59,8 +59,8 @@
   }
 </script>
 
-<style scoped lang="scss">
-  .iframe {
+<style lang="scss">
+  .IntegrationIframe {
     border: none;
     width: 100%;
     height: 100%;

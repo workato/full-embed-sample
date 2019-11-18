@@ -1,7 +1,7 @@
 <template>
-  <div class="integrations">
-    <SidePanel class="aside"></SidePanel>
-    <div class="content">
+  <div class="IntegrationLayout">
+    <SidePanel class="IntegrationLayout__aside"></SidePanel>
+    <div class="IntegrationLayout__content">
       <router-view></router-view>
     </div>
   </div>
@@ -16,18 +16,19 @@
   }
 </script>
 
-<style scoped lang="scss">
-  .integrations {
+<style lang="scss">
+  .IntegrationLayout {
     flex: 1 1 auto;
     display: flex;
     align-items: stretch;
-  }
 
-  .aside {
-    width: 250px;
-  }
+    &__content {
+      position: relative;
+      flex: 1 1 auto;
+    }
 
-  .content {
-    position: relative;
+    &__aside {
+      width: 250px;
+    }
   }
 </style>
