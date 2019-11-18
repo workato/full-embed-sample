@@ -313,9 +313,9 @@
 
   .logo {
     margin-left: 30px;
-    width: 80px;
+    width: 125px;
     margin-right: auto;
-    height: 29px;
+    height: 30px;
     background: url("./assets/logo.png") center / contain no-repeat;
     flex: 0 0 auto;
   }
