@@ -3,10 +3,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Workato Embedding Client</title>
+	<title>Workato embedded</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="assets/css/workato.css">
 </head>
 <body>
 <header>
@@ -22,37 +23,14 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">Workato Embedding Client</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+					<a href="index.html" class="title">Workato embedded</a>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="tsd-page-title">
 		<div class="container">
-			<ul class="tsd-breadcrumb">
-				<li>
-					<a href="globals.html">Globals</a>
-				</li>
-			</ul>
-			<h1> Workato Embedding Client</h1>
+			<h1> Workato embedded</h1>
 		</div>
 	</div>
 </header>
@@ -60,17 +38,25 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<a href="#embedding-guide" id="embedding-guide" style="color: inherit; text-decoration: none;">
-					<h1>Embedding Guide</h1>
+				<p><em>Workato embedded</em> allows all pages and elements on the Workato platform to be embedded within in an iframe built into the OEM partner’s platform UI. This allows for the most seamless end customer experience and brings the power of Workato&#39;s modern, low-code recipe building interface to your platform.</p>
+				<p>Alongside tools like the <a href="https://docs.workato.com/features/activity-audit-log.html">activity audit log</a>, <a href="https://docs.workato.com/user-accounts-and-teams/team-collaboration.html#team-roles">role-based access control</a>, the <a href="https://docs.workato.com/features/admin-dashboard.html">Workato dashboard</a> and more, your customers can build, test and monitor their integrations from within your platform.</p>
+				<a href="#introduction" id="introduction" style="color: inherit; text-decoration: none;">
+					<h2>Introduction</h2>
 				</a>
-				<p>Embedding is a way to integrate Workato into another webapp as seamless as possible. Let&#39;s call this host webapp a <em>vendor</em>.  </p>
-				<p>Technically this integration is done via iframe - a native way to embed one webapp into another in a browser.</p>
-				<p>To better match vendor&#39;s design we provide a way to customize some of Workato&#39;s style properties like brand color, page margins etc.  </p>
-				<p>We also provide <code>Workato Embedding Client</code> script that is meant to simplify synchronization between Workato (embedded via iframe) and the vendor&#39;s host webapp.</p>
-				<a href="#embedding-details" id="embedding-details" style="color: inherit; text-decoration: none;">
-					<h2>Embedding details</h2>
+				<p>In this guide, we will show you how Workato embedded can be implemented within your platform.</p>
+				<p>A couple of key points to note:</p>
+				<ul>
+					<li><p>The integration between Workato and the <em>vendor</em> is done via iframe - a native way to embed one webapp into another in a browser.</p>
+					</li>
+					<li><p>To better match vendor&#39;s page style and design, Workato provides a way to customize some of Workato&#39;s style properties like brand color, page margins etc.  </p>
+					</li>
+					<li><p>We also provide the <code>Workato Embedding Client</code> script that is meant to simplify synchronization between Workato (embedded via iframe) and the vendor&#39;s webapp.</p>
+					</li>
+				</ul>
+				<a href="#configuration-parameters" id="configuration-parameters" style="color: inherit; text-decoration: none;">
+					<h2>Configuration parameters</h2>
 				</a>
-				<p>In order to provide seamless integration to the end-user vendor need to provide us a few configuration parameters:</p>
+				<p>In order to provide seamless integration to the end-user, the OEM partner needs to provide Workato a few configuration parameters:</p>
 				<table>
 					<thead>
 						<tr>
@@ -99,16 +85,27 @@
 							<td>List of properties that customize Workato to better match vendor&#39;s design. See <a href="#styling">Styling</a> section for more information.</td>
 						</tr>
 				</tbody></table>
-				<p>Let&#39;s introduce a few terms to make this guide more clear:</p>
+				<a href="#termslegend" id="termslegend" style="color: inherit; text-decoration: none;">
+					<h2>Terms/Legend</h2>
+				</a>
+				<p>We will introduce a few terms to make this guide clearer:</p>
+				<a href="#links" id="links" style="color: inherit; text-decoration: none;">
+					<h3>Links</h3>
+				</a>
 				<ul>
+					<li><strong>Vendor</strong>: The OEM partner&#39;s web app is a <strong><em>vendor</em></strong>.  </li>
 					<li><strong>Vendor URL</strong> - all the URLs that belong to <code>Vendor origin</code> (<code>https://vendor.com/*</code>)</li>
 					<li><strong>Embedding URL</strong> - all the vendor URLs that start with <code>Embedding URL prefix</code> (<code>https://vendor.com/integration/*</code>).</li>
 					<li><strong>Embedding link</strong> - <code>&lt;a&gt;</code> element which points to an embedding URL.</li>
 					<li><strong>Embedding iframe</strong> or just <strong>iframe</strong> - an <code>&lt;iframe&gt;</code> HTML element that contains embedded Workato webapp.  </li>
-					<li><strong>Embedding page</strong> - any page of the vendor&#39;s webapp which is located under embedding URL <strong>and</strong> which contains an embedding iframe.</li>
+					<li><strong>Embedding page</strong> - any page of the vendor&#39;s webapp which is located under embedding URL <strong>and</strong>  contains an embedding iframe.</li>
 				</ul>
-				<p><code>Vendor origin</code> and <code>Embedding URL prefix</code> parameters are needed to convert all the links in the embedded Workato webapp into an embedding links e.g. <code>&lt;a href=&quot;/foo?a=1#hash&quot;&gt;</code> will become <code>&lt;a href=&quot;https://vendor.com/integration/foo?a=1#hash&quot;&gt;</code>.
-				This allows user to open proper embedding page when he wants to open a link in a new tab or in case of copying a link&#39;s URL.</p>
+				<p><code>Vendor origin</code> and <code>Embedding URL prefix</code> parameters are needed to convert all the links in the embedded Workato webapp into an embedding links.</p>
+				<p>For example, <code>&lt;a href=&quot;/foo?a=1#hash&quot;&gt;</code> will become <code>&lt;a href=&quot;https://vendor.com/integration/foo?a=1#hash&quot;&gt;</code>.  </p>
+				<p>This allows user to open proper embedding page when he wants to open a link in a new tab or in case of copying a link&#39;s URL.</p>
+				<a href="#communication-between-apps" id="communication-between-apps" style="color: inherit; text-decoration: none;">
+					<h3>Communication between apps</h3>
+				</a>
 				<p>Communication between the iframe and the vendor webapp is done via browser&#39;s <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage">PostMessage API</a>.</p>
 				<p>See <a href="globals.html#embeddingworkatomessage">EmbeddingWorkatoMessage</a> for the complete list of messages that Workato sends to the vendor&#39;s webapp and <a href="globals.html#embeddingvendormessage">EmbeddingVendorMessage</a> for the list of messages
 				that can be sent in the opposite direction.</p>
@@ -116,7 +113,7 @@
 				<a href="#workato-embedding-client" id="workato-embedding-client" style="color: inherit; text-decoration: none;">
 					<h2>Workato Embedding Client</h2>
 				</a>
-				<p>It&#39;s a tiny script that simplifies communication between vendor&#39;s webapp and embedded Workato app.</p>
+				<p>The <code>Workato Embedding Client</code> is a tiny script that simplifies communication between vendor&#39;s webapp and the embedded Workato platform.</p>
 				<p>It also provides a few helper methods that help with synchronization of Workato and embedding URLs.</p>
 				<p>In order to inject it into vendor&#39;s webapp you can follow these installation steps:</p>
 				<ol>
@@ -148,7 +145,7 @@
 					<h2>Styling</h2>
 				</a>
 				<p>We provide a way to customize some of Workato&#39;s style properties to better match design of the vendor&#39;s webapp.</p>
-				<p>All of them are optional. If value for some property is not provided it&#39;s default value will be used.</p>
+				<p>All of them are optional. If the value for a property is not provided its default value will be used.</p>
 				<p>Here is the list of all the customizable properties:</p>
 				<table>
 					<thead>
@@ -160,22 +157,22 @@
 					</thead>
 					<tbody><tr>
 							<td><code>brand-color</code></td>
-							<td>Color</td>
+							<td>Hex color code</td>
 							<td><code>#108291</code></td>
 						</tr>
 						<tr>
 							<td><code>brand-hover-color</code></td>
-							<td>Color</td>
+							<td>Hex color code</td>
 							<td><code>#065f69</code></td>
 						</tr>
 						<tr>
 							<td><code>brand-pending-color</code></td>
-							<td>Color</td>
+							<td>Hex color code</td>
 							<td><code>#c7eded</code></td>
 						</tr>
 						<tr>
 							<td><code>page-background-color</code></td>
-							<td>Color</td>
+							<td>Hex color code</td>
 							<td><code>#f7f9fa</code></td>
 						</tr>
 						<tr>
@@ -215,7 +212,7 @@
 						</tr>
 					</thead>
 					<tbody><tr>
-							<td>Color</td>
+							<td>Hex color code</td>
 							<td>CSS color in 3- or 6-digits HEX format e.g. <code>#108291</code> or <code>#ccc</code></td>
 						</tr>
 						<tr>
@@ -243,66 +240,7 @@
 		</div>
 	</div>
 </div>
-<footer>
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
+<footer></footer>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
 <script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
