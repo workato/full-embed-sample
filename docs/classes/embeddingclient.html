@@ -168,7 +168,7 @@
 					<a name="on" class="tsd-anchor"></a>
 					<h3>on</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">on&lt;TMessageType&gt;<span class="tsd-signature-symbol">(</span>messageType<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TMessageType</span>, handler<span class="tsd-signature-symbol">: </span><a href="../globals.html#messagehandler" class="tsd-signature-type">MessageHandler</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">(EmbeddingSourceMessageOfType&lt;TMessageType, EmbeddingClickMessage&gt; | EmbeddingSourceMessageOfType&lt;TMessageType, EmbeddingNavigatedMessage&gt; | ... 4 more ... | EmbeddingSourceMessageOfType&lt;...&gt;)[&quot;payload&quot;]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">on&lt;TMessageType&gt;<span class="tsd-signature-symbol">(</span>messageType<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TMessageType</span>, handler<span class="tsd-signature-symbol">: </span><a href="../globals.html#messagehandler" class="tsd-signature-type">MessageHandler</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">EmbeddingSourceMessageOfType</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TMessageType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"payload"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 						<li class="tsd-signature tsd-kind-icon">on<span class="tsd-signature-symbol">(</span>messageType<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"*"</span>, handler<span class="tsd-signature-symbol">: </span><a href="../globals.html#messagehandler" class="tsd-signature-type">MessageHandler</a><span class="tsd-signature-symbol">&lt;</span><a href="../globals.html#embeddingworkatomessage" class="tsd-signature-type">EmbeddingWorkatoMessage</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
@@ -192,7 +192,7 @@
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
-									<h4>TMessageType<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"click"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"navigated"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"loaded"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"unloaded"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"heightChange"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"error"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"connectionStatusChange"</span></h4>
+									<h4>TMessageType<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">EmbeddingWorkatoMessage</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"type"</span><span class="tsd-signature-symbol">]</span></h4>
 								</li>
 							</ul>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -204,7 +204,7 @@
 									</div>
 								</li>
 								<li>
-									<h5>handler: <a href="../globals.html#messagehandler" class="tsd-signature-type">MessageHandler</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">(EmbeddingSourceMessageOfType&lt;TMessageType, EmbeddingClickMessage&gt; | EmbeddingSourceMessageOfType&lt;TMessageType, EmbeddingNavigatedMessage&gt; | ... 4 more ... | EmbeddingSourceMessageOfType&lt;...&gt;)[&quot;payload&quot;]</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>handler: <a href="../globals.html#messagehandler" class="tsd-signature-type">MessageHandler</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">EmbeddingSourceMessageOfType</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TMessageType</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"payload"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Will be called with message&#39;s payload as the first parameter.</p>
 									</div>
@@ -317,13 +317,13 @@
 								</div>
 								<p>It does the following:</p>
 								<ol>
-									<li><p>Calls <a href="../interfaces/navigationconfig.html#onworkatonavigation">NavigationConfig.onWorkatoNavigation</a> every time after embedded Workato app is navigated to another
-										page (Workato URL changes). It&#39;s also called right after initialization of Workato app.</p>
+									<li><p>Calls provided <a href="../interfaces/navigationconfig.html#onworkatonavigation">NavigationConfig.onWorkatoNavigation</a> callback every time after embedded Workato app is
+										navigated to another page (Workato URL changes). It&#39;s also called right after initialization of Workato app.</p>
 										<p>If this handler is omitted or <code>event.preventVendorUrlChange</code> is <strong>not</strong> called, current browser&#39;s URL will be
 										updated to corresponding embedding URL using <a href="https://developer.mozilla.org/en-US/docs/Web/API/History">History API</a>.</p>
 									</li>
-									<li><p>Calls <a href="../interfaces/navigationconfig.html#onvendornavigation">NavigationConfig.onVendorNavigation</a> every time user clicks on embedding links in the vendor&#39;s
-										webapp or clicks browser&#39;s back/forward buttons.</p>
+									<li><p>Calls provided <a href="../interfaces/navigationconfig.html#onvendornavigation">NavigationConfig.onVendorNavigation</a> callback every time user clicks on embedding links
+										in the vendor&#39;s webapp or clicks browser&#39;s back/forward buttons.</p>
 										<p>If this handler is omitted or <code>event.preventWorkatoUrlChange</code> is <strong>not</strong> called, <a href="embeddingclient.html#navigateto">navigateTo</a> method will
 										be called with the corresponding Workato URL.</p>
 										<p>Also if this handler is omitted or <code>event.preventVendorUrlChange</code> is <strong>not</strong> called, current browser&#39;s URL will
@@ -336,7 +336,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> config: <a href="../interfaces/navigationconfig.html" class="tsd-signature-type">NavigationConfig</a><span class="tsd-signature-symbol"> =&nbsp;{}</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> config: <a href="../interfaces/navigationconfig.html" class="tsd-signature-type">NavigationConfig</a><span class="tsd-signature-symbol"> = {}</span></h5>
 									<div class="tsd-comment tsd-typography">
 									</div>
 								</li>
@@ -440,10 +440,7 @@ Workato.extractWorkatoUrl(<span class="hljs-string">'https://google.com/foo/bar?
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span>
-								<span class="tsd-signature-symbol"> | </span>
-								<span class="tsd-signature-type">null</span>
-							</h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h4>
 						</li>
 					</ul>
 				</section>
