@@ -56,6 +56,12 @@
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
+							<h3>Accessors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="embeddingclient.html#loaded" class="tsd-kind-icon">loaded</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Configuration Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="embeddingclient.html#configure" class="tsd-kind-icon">configure</a></li>
@@ -87,15 +93,39 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="currentworkatourl" class="tsd-anchor"></a>
 					<h3>current<wbr>Workato<wbr>Url</h3>
-					<div class="tsd-signature tsd-kind-icon">current<wbr>Workato<wbr>Url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<div class="tsd-signature tsd-kind-icon">current<wbr>Workato<wbr>Url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = null</span></div>
 					<aside class="tsd-sources">
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Current Workato URL, loaded into the embedding iframe e.g. <code>/recipes/1?status=succeeded#jobs</code>
-							Is <code>undefined</code> until first <a href="../globals.html#embeddingloadedmessage">EmbeddingLoadedMessage</a> is received.</p>
+							<p>Current Workato URL, loaded into the embedding iframe e.g. <code>/recipes/1?status=succeeded#jobs</code>.
+								Is <code>null</code> until first <a href="../globals.html#embeddingloadedmessage">EmbeddingLoadedMessage</a> is received.
+							Also becomes <code>null</code> after <a href="../globals.html#embeddingunloadedmessage">EmbeddingUnloadedMessage</a> is received.</p>
 						</div>
 					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="loaded" class="tsd-anchor"></a>
+					<h3>loaded</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> loaded<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>A flag indicating that embedded Workato app is loaded and ready to send/receive messages.
+									Becomes <code>true</code> after <a href="../globals.html#embeddingloadedmessage">EmbeddingLoadedMessage</a> is received and <code>false</code> after <a href="../globals.html#embeddingunloadedmessage">EmbeddingUnloadedMessage</a>.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -470,7 +500,7 @@ Workato.extractWorkatoUrl(<span class="hljs-string">'https://google.com/foo/bar?
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> workatoUrl: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>Specifies Workato URL that will will be initially opened in the iframe.
+										<p>Specifies Workato URL that will be initially opened in the iframe.
 											If omitted, Workato URL will be extracted from the current browser&#39;s URL and if it&#39;s not an
 										embedding URL, an error will be thrown.</p>
 									</div>
@@ -499,6 +529,9 @@ Workato.extractWorkatoUrl(<span class="hljs-string">'https://google.com/foo/bar?
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="embeddingclient.html#currentworkatourl" class="tsd-kind-icon">current<wbr>Workato<wbr>Url</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="embeddingclient.html#loaded" class="tsd-kind-icon">loaded</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="embeddingclient.html#configure" class="tsd-kind-icon">configure</a>
