@@ -1,5 +1,5 @@
 <template>
-  <iframe class="IntegrationIframe" :src="iframeSrc"></iframe>
+  <iframe v-if="iframeSrc" class="IntegrationIframe" :src="iframeSrc"></iframe>
 </template>
 
 <script>
@@ -32,13 +32,21 @@
     },
 
     async beforeRouteEnter(to, from, next) {
-      const token = await fetch('/workato-jwt').then(res => res.json());
-      next(vm => vm.setToken(token));
+      const token = await getToken();
+      next(vm => vm.updateIframeSrc(to.fullPath, token));
     },
 
-    beforeRouteUpdate(to, from, next) {
-      Workato.navigateTo(Workato.extractWorkatoUrl(to.fullPath));
-      next();
+    async beforeRouteUpdate(to, from, next) {
+      if (Workato.loaded) {
+        Workato.navigateTo(Workato.extractWorkatoUrl(to.fullPath));
+        next();
+      } else {
+        // Removing currently loading iframe
+        this.updateIframeSrc(null);
+        // Requesting a token and updating an iframe `src`
+        this.updateIframeSrc(to.fullPath, await getToken());
+        next();
+      }
     },
 
     destroyed() {
@@ -52,10 +60,16 @@
     },
 
     methods: {
-      setToken(token) {
-        this.iframeSrc = Workato.generateIFrameUrl(token);
+      updateIframeSrc(embeddingUrl, token) {
+        this.iframeSrc = embeddingUrl ?
+          Workato.generateIFrameUrl(token, Workato.extractWorkatoUrl(embeddingUrl)) :
+          null;
       }
     }
+  };
+
+  async function getToken() {
+    return fetch('/workato-jwt').then(res => res.json());
   }
 </script>
 
