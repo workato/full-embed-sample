@@ -1,13 +1,5 @@
 # Embedding Guide
 
-There are two recommended ways to embed Workato into another web application:
-1. Classic approach
-2. SPA approach (Coming soon)
-
-## Classic approach
-
-This approach is less performant but much easier to implement: 
-
 1. Create a mapping between Workato URLs and internal URLs and make this configuration available in both server- and client-side code:  
     
     For example:
