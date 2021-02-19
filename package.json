@@ -9,9 +9,9 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "http-auth": "^3.2.4",
+    "http-auth": "^4.1.2",
     "jsonwebtoken": "^8.5.1",
-    "nanoid": "^2.1.4",
+    "nanoid": "^3.1.20",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
     "whatwg-fetch": "^3.0.0"
@@ -22,7 +22,7 @@
     "concurrently": "^5.3.0",
     "sass": "^1.19.0",
     "sass-loader": "^8.0.0",
-    "svg-url-loader": "^3.0.2",
+    "svg-url-loader": "^7.1.1",
     "vue-cli-plugin-express": "^1.0.2",
     "vue-template-compiler": "^2.6.10"
   },

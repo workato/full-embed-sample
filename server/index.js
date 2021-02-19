@@ -1,4 +1,4 @@
-import nanoid from 'nanoid';
+import {nanoid} from 'nanoid';
 import {sign} from 'jsonwebtoken';
 import auth from 'http-auth';
 
