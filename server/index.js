@@ -12,7 +12,7 @@ export default app => {
   }
 
   app.get('/workato-jwt', (req, res) => {
-    const {WK_API_KEY, WK_CUSTOMER_ID, WK_USER_ID} = process.env;
+    const {WK_API_KEY, WK_CUSTOMER_ID, WK_USER_ID, WK_CUSTOM_VENDOR_ORIGIN} = process.env;
     const subParams = [WK_API_KEY, WK_CUSTOMER_ID];
 
     if (WK_USER_ID) {
@@ -22,12 +22,13 @@ export default app => {
     const token = sign(
       {
         sub: subParams.join(':'),
-        jti: nanoid()
+        jti: nanoid(),
+        origin: WK_CUSTOM_VENDOR_ORIGIN || undefined
       },
       process.env.WK_JWT_PRIVATE_KEY,
       {algorithm: 'RS256'}
     );
-    
+
     res.json(token);
   });
 }

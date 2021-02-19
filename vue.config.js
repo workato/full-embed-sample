@@ -1,5 +1,8 @@
 module.exports = {
   crossorigin: 'anonymous',
+  devServer: {
+    disableHostCheck: true
+  },
   pluginOptions: {
     express: {
       shouldServeApp: true,
