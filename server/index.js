@@ -1,14 +1,15 @@
 import {nanoid} from 'nanoid';
 import {sign} from 'jsonwebtoken';
-import auth from 'http-auth';
+import {basic as createBasicAuth} from 'http-auth';
+import auth from 'http-auth-connect';
 
-const basicAuth = auth.basic({realm: "Private Area"}, (username, password, callback) => {
+const basicAuth = createBasicAuth({realm: "Private Area"}, (username, password, callback) => {
   callback(username === process.env.USER_NAME && password === process.env.USER_PASSWORD);
 });
 
 export default app => {
   if (process.env.USER_NAME && process.env.USER_PASSWORD) {
-    app.use(auth.connect(basicAuth));
+    app.use(auth(basicAuth));
   }
 
   app.get('/workato-jwt', (req, res) => {
