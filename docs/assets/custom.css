@@ -1,0 +1,39 @@
+h2 {
+  margin: 1.3em 0 .9em;
+}
+
+.container-main {
+  padding-bottom: 75px;
+}
+
+/*
+The code below is copy-pasted from older typedoc version (0.22)
+It returns nice table styles which were changed in 0.23
+*/
+.tsd-panel table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  margin-top: 10px;
+  word-break: normal;
+  word-break: keep-all;
+  border-collapse: collapse;
+}
+
+.tsd-panel table th {
+  font-weight: bold;
+}
+
+.tsd-panel table th,
+.tsd-panel table td {
+  padding: 6px 13px;
+  border: 1px solid var(--color-accent);
+}
+
+.tsd-panel table tr {
+  background: var(--color-background);
+}
+
+.tsd-panel table tr:nth-child(even) {
+  background: var(--color-background-secondary);
+}
