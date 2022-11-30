@@ -12,7 +12,7 @@
     "http-auth": "^4.1.2",
     "http-auth-connect": "^1.0.4",
     "jsonwebtoken": "^8.5.1",
-    "nanoid": "^3.1.20",
+    "nanoid": "^3.1.31",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
     "whatwg-fetch": "^3.0.0"
