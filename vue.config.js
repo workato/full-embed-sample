@@ -1,7 +1,7 @@
 module.exports = {
   crossorigin: 'anonymous',
   devServer: {
-    disableHostCheck: true
+    allowedHosts: 'all'
   },
   pluginOptions: {
     express: {
