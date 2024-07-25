@@ -48,8 +48,8 @@
     font-style: normal;
     font-weight: 300;
     src: local("Source Sans Pro Light"), local("SourceSansPro-Light"),
-    url("../public/webfonts/Source_Sans_Pro/Light.woff2") format("woff2"),
-    url("../public/webfonts/Source_Sans_Pro/Light.woff") format("woff");
+    url("@/assets/fonts/Source_Sans_Pro/Light.woff2") format("woff2"),
+    url("@/assets/fonts/Source_Sans_Pro/Light.woff") format("woff");
   }
 
   @font-face {
@@ -57,8 +57,8 @@
     font-style: normal;
     font-weight: 400;
     src: local("Source Sans Pro Regular"), local("SourceSansPro-Regular"),
-    url("../public/webfonts/Source_Sans_Pro/Regular.woff2") format("woff2"),
-    url("../public/webfonts/Source_Sans_Pro/Regular.woff") format("woff");
+    url("@/assets/fonts/Source_Sans_Pro/Regular.woff2") format("woff2"),
+    url("@/assets/fonts/Source_Sans_Pro/Regular.woff") format("woff");
 
   }
 
@@ -67,8 +67,8 @@
     font-style: normal;
     font-weight: 700;
     src: local("Source Sans Pro SemiBold"), local("SourceSansPro-SemiBold"),
-    url("../public/webfonts/Source_Sans_Pro/SemiBold.woff2") format("woff2"),
-    url("../public/webfonts/Source_Sans_Pro/SemiBold.woff") format("woff");
+    url("@/assets/fonts/Source_Sans_Pro/SemiBold.woff2") format("woff2"),
+    url("@/assets/fonts/Source_Sans_Pro/SemiBold.woff") format("woff");
   }
 
   @font-face {
@@ -76,8 +76,8 @@
     font-style: normal;
     font-weight: 900;
     src: local("Source Sans Pro Bold"), local("SourceSansPro-Bold"),
-    url("../public/webfonts/Source_Sans_Pro/Bold.woff2") format("woff2"),
-    url("../public/webfonts/Source_Sans_Pro/Bold.woff") format("woff");
+    url("@/assets/fonts/Source_Sans_Pro/Bold.woff2") format("woff2"),
+    url("@/assets/fonts/Source_Sans_Pro/Bold.woff") format("woff");
   }
 
   * {
