@@ -1,12 +1,12 @@
 module.exports = {
-  crossorigin: "anonymous",
+  crossorigin: 'anonymous',
   devServer: {
-    allowedHosts: "all",
+    allowedHosts: 'all',
   },
   pluginOptions: {
     express: {
       shouldServeApp: true,
-      serverDir: "./server",
+      serverDir: './server',
     },
   },
 };
